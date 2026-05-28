@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .rojo{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="texto">HOLA</h1>
+    <h2 id="textoRojo">Este texto cambia de color</h2>
+
+    <button id="boton">clica</button>
+    <button class="color">Fondo oscuro</button>
+
+    <p id="fecha"></p>
+
+<script>
+
+let boton = document.querySelector("#boton");
+let texto = document.querySelector("#texto");
+let fondo = document.querySelector(".color");
+
+let cambiado = false;
+
+const opciones = {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+};
+
+document.getElementById("fecha").innerHTML =
+    new Date().toLocaleDateString("es-ES", opciones);
+
+boton.addEventListener("click", function() {
+
+    if(cambiado === false){
+        texto.textContent = "ADIÓS";
+        cambiado = true;
+    } else {
+        texto.textContent = "HOLA";
+        cambiado = false;
+    }
+
+    document.getElementById("textoRojo").classList.toggle("rojo");
+
+});
+
+fondo.addEventListener("click", function() {
+
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+
+});
+
+</script>
+
+</body>
+</html>
